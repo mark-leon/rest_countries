@@ -2,32 +2,45 @@ import axios from 'axios';
 import React, {useState,useEffect}  from 'react';
 import Card from '../../Components/Card/Card';
 import Navbar from '../../Components/Navbar/Navbar';
+import Pagination from '../../Components/Pagination/Pagination';
 
 
 function Homepage() {
   const [countries,setCountries] = useState([]);
   const [search,setSearch] = useState('');
+  const [loading,setLoading] = useState(false)
+  const [currentpage,setCurrentpage] = useState(1)
+  const [postsPerPage] = useState(8);
   
   
   useEffect(() => {
-    axios.get('https://restcountries.com/v3.1/all')
-    .then(res => {
+    const fetchCountries = async () =>{
+      setLoading(true);
+      const res = await axios.get('https://restcountries.com/v3.1/all')
       setCountries(res.data)
-      //console.log(res.data)
-    })
-    .catch(error => console.log(error));
-  }, []);
+      setLoading(false)
+    };
+    fetchCountries();
+  },[]);
   
+  const indexOfLastPost = currentpage*postsPerPage;
+  const indexOfFirstPost  = indexOfLastPost - postsPerPage;
+  const currentPosts = countries.slice(indexOfFirstPost,indexOfLastPost)
+  
+
+  const paginate = pageNumber => setCurrentpage(pageNumber);
   return (
     <div>
       <Navbar></Navbar>
       <div className="container">
         <div className="row">
-      {countries.map((c)=>{
+      {currentPosts.map((c)=>{
         return <Card city ={c["capital"]} src={c["flags"]["png"]} name ={c["name"]["common"]}></Card>
       })}
          </div>
+         <Pagination postsPerPage = {postsPerPage} totalPosts = {countries.length} paginate = {paginate}></Pagination>
       </div>
+      
 
     </div>
   );
