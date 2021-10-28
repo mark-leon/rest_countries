@@ -11,14 +11,14 @@ const Country = (props) => {
             <div>
                 <Navbar></Navbar>
                 
-                <button type="button" class="btn btn-default btn-lg" onClick={handleClick}>
-                <i class="fas fa-arrow-right"></i>Go back</button>
-                <div className="container" style={{marginTop:"150px"}}>
-                <div class="row">
-                    <div class="col-lg-6 ">
+                <button type="button" className="btn btn-default btn-lg" onClick={handleClick}>
+                <i className="fas fa-arrow-right"></i>Go back</button>
+                <div className="container" style={{marginTop:"150px"}}> 
+                <div className="row">
+                    <div className="col-lg-6 ">
                         <img src={props.src} style={{height:"250px"}}/>
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <h1>{props.name}</h1>
                         <p><b>Native Name</b>  :  {props.native_name}</p>
                         <p><b>Population</b>  :  {props.population}</p>
@@ -26,7 +26,7 @@ const Country = (props) => {
                         <p><b>Sub region</b>  :  {props.subregion}</p>
                         <p><b>Capital</b>  :   {props.capital}</p>
                     </div>
-                    <div class="col" >
+                    <div className="col" >
                         <p><b>Top Level Domain</b>  :  {props.topLevelDomain}</p>
                         <p><b>Currencies</b>  : { props.currencies}</p>
                         <p><b>Languages</b>  :   {}</p>

@@ -7,18 +7,14 @@ import Pagination from '../../Components/Pagination/Pagination';
 
 function Homepage() {
   const [countries,setCountries] = useState([]);
-  const [search,setSearch] = useState('');
-  const [loading,setLoading] = useState(false)
   const [currentpage,setCurrentpage] = useState(1)
   const [postsPerPage] = useState(8);
   
   
   useEffect(() => {
     const fetchCountries = async () =>{
-      setLoading(true);
       const res = await axios.get('https://restcountries.com/v3.1/all')
       setCountries(res.data)
-      setLoading(false)
     };
     fetchCountries();
   },[]);
