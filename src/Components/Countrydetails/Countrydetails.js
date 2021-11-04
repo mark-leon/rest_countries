@@ -10,14 +10,14 @@ const Countrydetails = () => {
         axios.get(`https://restcountries.com/v2/name/${name.toLowerCase()}`)
         .then(res => {
           setCountry(res.data)
-
+          //setCountry((res.data.length > 0) ? res.data[0] : res.data)
         })
         .catch(error => console.log(error));
       }, []);
      return (
         <div>
-      {country.map((c)=>{
-        return <Country src={c["flags"]["png"]}
+          {country.map((c)=>{
+            return <Country src={c["flags"]["png"]}
                         name ={c["name"]}
                         native_name = {c["nativeName"]}
                         population ={c["population"]} 
@@ -25,8 +25,9 @@ const Countrydetails = () => {
                         subregion = {c["subregion"]}
                         capital = {c["capital"]}
                         topLevelDomain={c["topLevelDomain"]}
-                        currencies={c["currencies"]["name"]}>
-                </Country>
+                        currencies={c["currencies"][0]["name"]}
+                        language={c["languages"][0]["name"]}>
+                   </Country>
       })}
         </div>
     )

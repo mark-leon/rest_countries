@@ -10,9 +10,9 @@ const Country = (props) => {
     return (
             <div>
                 <Navbar></Navbar>
-                
-                <button type="button" className="btn btn-default btn-lg" onClick={handleClick}>
-                <i className="fas fa-arrow-right"></i>Go back</button>
+    
+                <button type="button" className="btn btn-default btn-lg" onClick={handleClick} style={{marginLeft:"30px"}}>
+                <i className="fas fa-long-arrow-alt-left"></i></button>
                 <div className="container" style={{marginTop:"150px"}}> 
                 <div className="row">
                     <div className="col-lg-6 ">
@@ -26,10 +26,10 @@ const Country = (props) => {
                         <p><b>Sub region</b>  :  {props.subregion}</p>
                         <p><b>Capital</b>  :   {props.capital}</p>
                     </div>
-                    <div className="col" >
+                    <div className="col" style={{marginTop:"90px"}} >
                         <p><b>Top Level Domain</b>  :  {props.topLevelDomain}</p>
                         <p><b>Currencies</b>  : { props.currencies}</p>
-                        <p><b>Languages</b>  :   {}</p>
+                        <p><b>Languages</b>  :   {props.language}</p>
                     </div>
                 </div>
             </div>

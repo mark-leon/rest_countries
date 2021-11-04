@@ -15,8 +15,8 @@ function App() {
   const {theme,toggle,dark} = useContext(ThemeContext)
   
   return (
-<div className = "App" style={{ backgroundColor: theme.backgroundColor,
- color: theme.color}}>   
+    <div className = "App" style={{ backgroundColor: theme.backgroundColor,
+    color: theme.color, height:"800px", width:"100%"}}>   
   <Router>
     <Switch>
       <Route exact path="/">
@@ -25,8 +25,11 @@ function App() {
       <Route exact path="/:name">
         <Countrydetails></Countrydetails>
       </Route>
+      <Route exact path="/region/:region">
+        <Homepage></Homepage>
+      </Route>
     </Switch>
-    </Router>   
+  </Router>   
     </div>
   );
 }
